@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="Random Quote Generator" />
+    <meta property="og:description" content="Generate Random quote Daily. Bless yourself with new things." />
+    <meta property="og:image" content="https://shantanu2645.github.io/pastejacking-awareness/thumbnail.jpg" />
+    <meta property="og:url" content="https://shantanu2645.github.io/pastejacking-awareness" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Random Quote Generator" />
+    <meta name="twitter:description" content="Generate Random quote Daily. Bless yourself with new things." />
+    <meta name="twitter:image" content="https://shantanu2645.github.io/pastejacking-awareness/thumbnail.jpg" />
+    <meta name="twitter:url" content="https://shantanu2645.github.io/pastejacking-awareness" />
+
     <title>Random Quote Generator</title>
     <style>
         body {
@@ -58,18 +72,18 @@
             color: #333; 
             margin-bottom: 10px; 
         }
-        #copyButton {
+        #regenerate {
             padding: 10px 15px;
             border: none;
-            background-color: #007bff;
+            background-color: #20b0b3;
             color: white;
             border-radius: 5px;
             cursor: pointer;
             width: 100%; 
             box-sizing: border-box; 
         }
-        #copyButton:hover {
-            background-color: #0056b3;
+        #regenerate:hover {
+            background-color: #0066d3;
         }
     </style>
 </head>
@@ -79,7 +93,7 @@
 <div class="card">
     <div class="header">Daily Quote</div> 
     <div class="quote-box" id="quote"></div> 
-    <button id="copyButton">Copy Quote</button>
+    <button id="regenerate" onclick="displayQuote()">New Quote</button>
 </div>
 
 <script>
@@ -88,8 +102,35 @@
         "Life is what happens when you're busy making other plans.",
         "Get busy living or get busy dying.",
         "You only live once, but if you do it right, once is enough.",
-        "In the end, we only regret the chances we didn't take."
+        "In the end, we only regret the chances we didn't take.",
+        "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
+        "Believe you can and you're halfway there.",
+        "The only limit to our realization of tomorrow will be our doubts of today.",
+        "You miss 100% of the shots you don’t take.",
+        "Your time is limited, so don’t waste it living someone else’s life.",
+        "The only way to do great work is to love what you do.",
+        "It does not matter how slowly you go as long as you do not stop.",
+        "The future belongs to those who believe in the beauty of their dreams.",
+        "What lies behind us and what lies before us are tiny matters compared to what lies within us.",
+        "Life is either a daring adventure or nothing at all.",
+        "Dream big and dare to fail.",
+        "Act as if what you do makes a difference. It does.",
+        "Success usually comes to those who are too busy to be looking for it.",
+        "Don’t watch the clock; do what it does. Keep going.",
+        "Everything you’ve ever wanted is on the other side of fear.",
+        "Opportunities don't happen. You create them.",
+        "I find that the harder I work, the more luck I seem to have.",
+        "Don’t be pushed around by the fears in your mind. Be led by the dreams in your heart.",
+        "Challenges are what make life interesting; overcoming them is what makes life meaningful.",
+        "What we think, we become.",
+        "You are never too old to set another goal or to dream a new dream.",
+        "The journey of a thousand miles begins with one step.",
+        "If you want to lift yourself up, lift up someone else.",
+        "Limit your 'always' and your 'nevers.'",
+        "The only impossible journey is the one you never begin.",
+        "Keep your face always toward the sunshine—and shadows will fall behind you."
     ];
+
 
     function getRandomQuote() {
         return quotes[Math.floor(Math.random() * quotes.length)];
@@ -99,14 +140,6 @@
         const quoteDiv = document.getElementById('quote');
         quoteDiv.innerText = getRandomQuote();
     }
-
-    document.getElementById('copyButton').addEventListener('click', () => {
-        const quoteDiv = document.getElementById('quote');
-        const selectedText = "Hello, be aware of pastejacking. Double-check before copying and pasting anything.";
-        navigator.clipboard.writeText(selectedText)
-            .then(() => alert('Quote copied to clipboard!'))
-            .catch(err => console.error('Error copying text: ', err));
-    });
 
     document.addEventListener('copy', function(e) {
         const selectedText = "Hello, be aware of pastejacking. Double-check before copying and pasting anything.";
