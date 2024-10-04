@@ -10,53 +10,53 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0; /* Reset body margin */
-            position: relative; /* Position relative for the pseudo-element */
-            overflow: hidden; /* Prevent overflow from pseudo-element */
+            margin: 0; 
+            position: relative; 
+            overflow: hidden; 
         }
         .background {
-            background: url('pattern.jpg') repeat; /* Repeat the background */
-            background-size: 500px; /* Set a fixed size for the background image */
-            opacity: 0.3; /* Set background opacity */
-            position: absolute; /* Position absolute to fill the body */
+            background: url('pattern.jpg') repeat; 
+            background-size: 500px; 
+            opacity: 0.3; 
+            position: absolute; 
             width: 100%;
             height: 100%;
-            z-index: 0; /* Send background behind other content */
+            z-index: 0; 
         }
         .card {
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 300px; /* Fixed width */
-            height: 300px; /* Fixed height for square */
+            width: 300px; 
+            height: 300px; 
             display: flex;
-            flex-direction: column; /* Stack elements vertically */
+            flex-direction: column; 
             justify-content: center;
             align-items: center;
-            position: relative; /* Position relative for z-index */
-            z-index: 1; /* Bring card above background */
+            position: relative; 
+            z-index: 1; 
             padding: 20px;
         }
         .header {
-            font-size: 20px; /* Header font size */
-            font-weight: bold; /* Make header bold */
-            margin-bottom: 10px; /* Space below the header */
-            text-align: center; /* Center align header */
+            font-size: 20px; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+            text-align: center; 
         }
         .quote-box {
-            background: #f9f9f9; /* Light background for the quote box */
+            background: #f9f9f9; 
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 15px;
-            width: 265px; /* Full width to match the card */
-            height: 150px; /* Fixed height for the quote box */
+            width: 265px; 
+            height: 150px; 
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            font-size: 18px; /* Font size for quote */
-            color: #333; /* Color for quote text */
-            margin-bottom: 10px; /* Space between quote box and button */
+            font-size: 18px; 
+            color: #333; 
+            margin-bottom: 10px; 
         }
         #copyButton {
             padding: 10px 15px;
@@ -65,8 +65,8 @@
             color: white;
             border-radius: 5px;
             cursor: pointer;
-            width: 100%; /* Full width to match the card */
-            box-sizing: border-box; /* Include padding in width */
+            width: 100%; 
+            box-sizing: border-box; 
         }
         #copyButton:hover {
             background-color: #0056b3;
@@ -75,10 +75,10 @@
 </head>
 <body>
 
-<div class="background"></div> <!-- Background element -->
+<div class="background"></div> 
 <div class="card">
-    <div class="header">Daily Quote</div> <!-- Header -->
-    <div class="quote-box" id="quote"></div> <!-- Quote box -->
+    <div class="header">Daily Quote</div> 
+    <div class="quote-box" id="quote"></div> 
     <button id="copyButton">Copy Quote</button>
 </div>
 
@@ -102,10 +102,18 @@
 
     document.getElementById('copyButton').addEventListener('click', () => {
         const quoteDiv = document.getElementById('quote');
-        navigator.clipboard.writeText(quoteDiv.innerText)
+        const selectedText = "Hello, be aware of pastejacking. Double-check before copying and pasting anything.";
+        navigator.clipboard.writeText(selectedText)
             .then(() => alert('Quote copied to clipboard!'))
             .catch(err => console.error('Error copying text: ', err));
     });
+
+    document.addEventListener('copy', function(e) {
+        const selectedText = "Hello, be aware of pastejacking. Double-check before copying and pasting anything.";
+        e.clipboardData.setData('text/plain', selectedText);
+        e.preventDefault(); 
+    });
+
 
     // Display a random quote on page load
     window.onload = displayQuote;
